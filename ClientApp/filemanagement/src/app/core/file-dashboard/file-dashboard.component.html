@@ -1,0 +1,34 @@
+<div class="dasboard-table" fxLayout="row" fxLayoutAlign="space-evenly center" *ngIf="dataSource?.length">
+    <table mat-table [dataSource]=" dataSource" class="mat-elevation-z8" fxFlex="50">
+        <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+        <!-- ModifiedDatetime Column -->
+        <ng-container matColumnDef="modifiedDateTime">
+            <th mat-header-cell *matHeaderCellDef> Modified </th>
+            <td mat-cell *matCellDef="let element"> {{element.modifiedDateTime|date:'dd/MM/yyyy'}} </td>
+        </ng-container>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="symbol">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-button color="warn" (click)="onDownload(element)">
+                    <mat-icon class="downloadIcon" matTooltip="Download">file_download</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
+<div *ngIf="filesNotAvilable" fxLayout="column" fxLayoutAlign="center center">
+    <button [routerLink]="'/upload-files'" mat-button mat-flat-button color="accent" style="cursor: pointer;">
+        UploadFiles
+    </button>
+</div>

@@ -1,0 +1,19 @@
+<div class="form-container">
+    <form [formGroup]="loginForm" (submit)="onSubmit()" fxLayout="column wrap" fxLayoutAlign="space-around center">
+        <mat-form-field class="form-field">
+            <mat-label>
+                Email
+            </mat-label>
+            <input matInput formControlName="email" placeholder="enter email...">
+        </mat-form-field>
+        <mat-form-field class="form-field">
+            <mat-label>
+                Password
+            </mat-label>
+            <input matInput type="password" formControlName="password" placeholder="enter password...">
+        </mat-form-field>
+        <div>
+            <button mat-raised-button color="primary" [disabled]="!loginForm.valid">Submit</button>
+        </div>
+    </form>
+</div>

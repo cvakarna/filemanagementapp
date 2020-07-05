@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+    <a class="title" mat-button [routerLink]="'/home'">File Management</a>
+    <a class="menu-items" [routerLink]="'/upload-files'" mat-button>Upload Files</a>
+    <a class="menu-items" [routerLink]="'/file-dashboard'" mat-button>Files Dashboard</a>
+    <span class="menu-spacer"></span>
+    <a class="menu-items" [routerLink]="'/login'" mat-button *ngIf="!authService.currentUserValue">SignIn</a>
+    <a class="menu-items" (click)="logout()" mat-button *ngIf="authService.currentUserValue">SignOut</a>
+    <a class="menu-items" *ngIf="authService.currentUserValue">{{authService.currentUserValue.userName}}</a>
+
+</mat-toolbar>

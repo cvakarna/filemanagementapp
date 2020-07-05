@@ -1,0 +1,24 @@
+<div style="padding: 20px;margin-top: 50px;" fxLayout="column" fxLayoutAlign="center center">
+    <mat-card class="card-info" fxFlex="100">
+        <mat-card-actions>
+            <button mat-button color="warn" (click)="onClick()">
+                <mat-icon>file_upload</mat-icon><span style="display: block;"> Upload</span>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+    <input type="file" class="file-upload" #fileUpload name="fileUpload" multiple style="display: none;" />
+</div>
+<div fxLayout="row" fxLayoutAlign="space-around center">
+    <hr fxFlex="58" fxFlexOffset="20">
+</div>
+<div fxLayout="row" fxLayoutAlign="center" *ngIf=files?.length>
+    <mat-card class="upload-status" fxFlex="48" fxFlexOffset="0">
+        <div>
+            <h4>Upload Status.....</h4>
+        </div>
+        <div style="padding: 12px;" *ngFor="let file of files">
+            <mat-progress-bar mode="determinate" [value]="file.progress"></mat-progress-bar>
+            <span id="file-label">{{file.data.name}}</span>
+        </div>
+    </mat-card>
+</div>
